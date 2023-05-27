@@ -45,14 +45,15 @@ const MeetingRoom = () => {
   const [roomId, SetRoomId] = useState();
   const [activeUsers, setActiveUsers] = useState([]);
   const [startCamera, setStartCamera] = useState(false);
-  const [modalVisible, setModalVisible] = useState(false);
+  // const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(true);
 
   const StartCamera = async () => {
     const { status } = await Camera.requestCameraPermissionsAsync();
     if (status == "granted") {
       setStartCamera(true);
     } else {
-      alert("Access Denied");
+      // alert("Access Denied");
     }
   };
 
@@ -63,7 +64,7 @@ const MeetingRoom = () => {
 
   useEffect(() => {
     // const API_URL ="https://6b4e-14-139-239-130.in.ngrok.io";
-    socket = io("https://fe41-2405-201-680b-3d25-200a-37e4-d7c0-c5eb.in.ngrok.io");
+    socket = io("https://9025-2405-201-680b-3d25-c5e7-d392-7907-bd5f.in.ngrok.io");
     console.log("Hello");
     socket.on("connection", () => {
       console.log("connected");
@@ -104,7 +105,7 @@ const MeetingRoom = () => {
               {activeUsers
                 .filter((user) => user.username != name)
                 .map((user, index) => (
-                  <View style={styles.activeUserContainer}>
+                  <View style={styles.activeUserContainer} key={index}>
                     <Text style={{ color: "white" }}>{user.username}</Text>
                   </View>
                 ))}
