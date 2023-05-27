@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import {
-  Modal,
   View,
   Text,
   TouchableOpacity,
   StyleSheet,
   SafeAreaView,
-  Alert,
 } from "react-native";
 import StartMeeting from "../Components/StartMeeting";
 import { io } from "socket.io-client";
 import { Camera } from "expo-camera";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Chat from "../Components/Chat";
+import Modal from "react-native-modal"
 
 let socket;
 
@@ -45,8 +44,7 @@ const MeetingRoom = () => {
   const [roomId, SetRoomId] = useState();
   const [activeUsers, setActiveUsers] = useState([]);
   const [startCamera, setStartCamera] = useState(false);
-  // const [modalVisible, setModalVisible] = useState(false);
-  const [modalVisible, setModalVisible] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const StartCamera = async () => {
     const { status } = await Camera.requestCameraPermissionsAsync();
@@ -63,8 +61,7 @@ const MeetingRoom = () => {
   };
 
   useEffect(() => {
-    // const API_URL ="https://6b4e-14-139-239-130.in.ngrok.io";
-    socket = io("https://9025-2405-201-680b-3d25-c5e7-d392-7907-bd5f.in.ngrok.io");
+    socket = io("https://c96d-2405-201-680b-3d25-b5d7-6bd0-a748-25fd.in.ngrok.io");
     console.log("Hello");
     socket.on("connection", () => {
       console.log("connected");
@@ -84,14 +81,15 @@ const MeetingRoom = () => {
             transparent= "false"
             presentationStyle="fullScreen"
             visible={modalVisible}
-            onRequestClose={()=>{
-              setModalVisible(!modalVisible)
-            }}
+            // onRequestClose={()=>{
+            //   setModalVisible(!modalVisible)
+            // }}
           >
-            <Chat
+            {/* <Chat
               modalVisible={modalVisible}
               setModalVisible={setModalVisible}
-            />
+            /> */}
+            <Text>Hello!!!</Text>
           </Modal>
           <View style={styles.activeUsersContainer}>
             <View style={styles.cameraContainer}>
