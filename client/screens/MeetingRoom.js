@@ -85,10 +85,10 @@ const MeetingRoom = () => {
             //   setModalVisible(!modalVisible)
             // }}
           >
-            {/* <Chat
+            <Chat
               modalVisible={modalVisible}
               setModalVisible={setModalVisible}
-            /> */}
+            />
             <Text>Hello!!!</Text>
           </Modal>
           <View style={styles.activeUsersContainer}>
