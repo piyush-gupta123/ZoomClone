@@ -61,7 +61,7 @@ const MeetingRoom = () => {
   };
 
   useEffect(() => {
-    socket = io("https://c96d-2405-201-680b-3d25-b5d7-6bd0-a748-25fd.in.ngrok.io");
+    socket = io("https://66aa-2405-201-680b-3e00-3005-ee0e-9a02-7eb4.in.ngrok.io");
     console.log("Hello");
     socket.on("connection", () => {
       console.log("connected");
@@ -78,18 +78,19 @@ const MeetingRoom = () => {
         <SafeAreaView style={{ flex: 1 }}>
           <Modal
             animationType="slide"
-            transparent= "false"
-            presentationStyle="fullScreen"
+            transparent= {false}
+            // presentationStyle="fullScreen"
             visible={modalVisible}
-            // onRequestClose={()=>{
-            //   setModalVisible(!modalVisible)
-            // }}
+            onRequestClose={()=>{
+              setModalVisible(!modalVisible)
+            }}
+            style={{margin: 0}}
           >
             <Chat
               modalVisible={modalVisible}
               setModalVisible={setModalVisible}
             />
-            <Text>Hello!!!</Text>
+            {/* <Text>Hello!!!</Text> */}
           </Modal>
           <View style={styles.activeUsersContainer}>
             <View style={styles.cameraContainer}>
